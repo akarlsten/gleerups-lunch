@@ -28,13 +28,6 @@ const RestaurantItem = ({ id, name, address, position, menuItems }, props) => (
       <p className="restaurant__address">{`${address.street}, ${
         address.postCode
       } ${address.city} `}</p>
-      <span role="img">
-        {
-          <a href="`https://www.google.com/maps/place/${address.street},+${address.postCode}+${address.city}/`">
-            🌍
-          </a>
-        }
-      </span>
       <aside>
         Avstånd från Gleerups:
         {` ${distanceFromGleerups(position.long, position.lat)} km`}

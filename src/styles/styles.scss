@@ -24,13 +24,15 @@ section {
   border-width: 0;
   border-radius: 0.5rem;
   margin-bottom: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   box-shadow: 0 0.25rem 3rem rgba(255, 106, 193, 0.5);
 }
 
 h1 {
   font-weight: 900;
   font-size: 5rem;
-  margin: 2rem 0 0 0;
+  margin: 0;
 }
 
 h2 {
@@ -39,7 +41,7 @@ h2 {
 }
 
 header {
-  margin: 0 0 2rem 0;
+  margin: 2rem 1rem 2rem 1rem;
 }
 
 footer {
@@ -58,6 +60,14 @@ a {
   }
 }
 
+ul {
+  list-style-type: none;
+  padding-left: 1rem;
+  li {
+    padding-bottom: 0.5rem;
+  }
+}
+
 .restaurant__title {
   padding: 0.5rem 0.5rem;
   background-color: $accent-color;
@@ -65,7 +75,7 @@ a {
   border-radius: 0.5rem 0.5rem 0 0;
   box-shadow: 0 0.2rem 1rem rgba(255, 106, 193, 0.5);
   h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 }
 
