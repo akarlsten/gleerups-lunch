@@ -1,0 +1,116 @@
+{
+  "date": "måndag, 18e mars",
+  "restaurants": [
+    {
+      "id": "1",
+      "name": "Kolgas",
+      "position": {
+        "lat": "55.61277",
+        "long": "12.99843"
+      },
+      "address": {
+        "street": "Hans Michelsensgatan 1C",
+        "postCode": "21120",
+        "city": "MALMÖ"
+      },
+      "menuItems": [
+        {
+          "dish": "Köttfärslimpa med gräddsås, lingon och potatis"
+        },
+        {
+          "dish": "Husets Pastagratäng med riven ost"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Slagthuset",
+      "position": {
+        "lat": "55.61133",
+        "long": "13.00281"
+      },
+      "address": {
+        "street": "Carlsgatan 12E",
+        "postCode": "21120",
+        "city": "MALMÖ"
+      },
+      "menuItems": [
+        {
+          "dish": "Kålpudding med sockrade lingon, krämig gräddsås & persilja."
+        },
+        {
+          "dish": "Ångad sejfilé med bakat ägg, brynt smör, citron & spenat."
+        },
+        {
+          "dish": "Pad Thai med ägg, vårlök, vitlök & böngroddar."
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Glasklart",
+      "position": {
+        "lat": "55.61525",
+        "long": "12.99042"
+      },
+      "address": {
+        "street": "Dockplatsen 1",
+        "postCode": "21119",
+        "city": "MALMÖ"
+      },
+      "menuItems": [
+        {
+          "dish": "Piccata Milanese på kyckling med kryddig tomatsås och ris med grönsaker"
+        },
+        {
+          "dish": "Fylld röd paprika med kryddig bolognese på soyafärs, gratinerad med mozzarella, serveras med mild yoghurtsås"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "In The Pink",
+      "position": {
+        "lat": "55.61018",
+        "long": "13.00015"
+      },
+      "address": {
+        "street": "Rälsplatsen 3",
+        "postCode": "21120",
+        "city": "MALMÖ"
+      },
+      "menuItems": [
+        {
+          "dish": "Svampsoppa med grädde och färska örter toppad med knaperstekt bacon."
+        },
+        {
+          "dish": "Kikärtgryta med spenat, tomat, vitlök, kokosgrädde, garam masala, chili och gurkmeja."
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "MiaMarias",
+      "position": {
+        "lat": "55.61355",
+        "long": "12.99189"
+      },
+      "address": {
+        "street": "Isbergs gata 7",
+        "postCode": "21119",
+        "city": "MALMÖ"
+      },
+      "menuItems": [
+        {
+          "dish": "Panerad sej med sötsyrlig pak choi. Serveras med ris och chilimajo."
+        },
+        {
+          "dish": "Dubbelmarinerad fläskfilé (kall), persilja, kapris, citron. Serveras med potatiskaka, örtcreme fraiche och grönsallad med fetaost."
+        },
+        {
+          "dish": "Rostad spetskål med aprikoser, marinerad prästost, mandel och blomkålskräm."
+        }
+      ]
+    }
+  ]
+}
