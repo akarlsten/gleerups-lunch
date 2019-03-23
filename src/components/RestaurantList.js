@@ -8,8 +8,8 @@ const RestaurantList = props => (
     query={graphql`
       query {
         allApiRestaurants(
-          filter: { id: { ne: "dummy" } }
-          sort: { fields: alternative_id }
+          filter: { id: { ne: "dummy" }, name: { ne: "string" } }
+          sort: { fields: distance }
         ) {
           edges {
             node {
@@ -17,6 +17,7 @@ const RestaurantList = props => (
               alternative_id
               name
               emoji
+              description
               position {
                 lat
                 long
@@ -26,6 +27,7 @@ const RestaurantList = props => (
                 postCode
                 city
               }
+              distance
               menuItems {
                 dish
               }

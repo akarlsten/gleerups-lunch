@@ -1,34 +1,30 @@
 import React from "react"
 
-const distanceFromGleerups = (lon2, lat2) => {
-  const toRad = x => {
-    return (x * Math.PI) / 180
-  }
+const googleDirectionsFormatter = (name, { street, postCode, city }) => {
+  const formattedName = name => encodeURI(`${name} `)
+  const formattedStreet = street => encodeURI(`${street} `)
+  const formattedPostcode = postCode => encodeURI(`${postCode} `)
+  const formattedCity = city => encodeURI(city)
+  const gleerupsAdress = encodeURI("Hans Michelsensgatan 9 21120 MALMÖ")
 
-  const R = 6371 // Radius of the earth in km
-  const dLat = toRad(lat2 - 55.6124) // Javascript functions in radians
-  const dLon = toRad(lon2 - 12.99959)
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(toRad(55.6124)) *
-      Math.cos(toRad(lat2)) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2)
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-  const d = R * c // Distance in km
-  return parseFloat(d).toPrecision(1)
+  return `https://www.google.com/maps/dir/?api=1&origin=${gleerupsAdress}&destination=${formattedName(
+    name
+  ) +
+    formattedStreet(street) +
+    formattedPostcode(postCode) +
+    formattedCity(city)}&travelmode=walking`
 }
 
 const RestaurantItem = (
-  { id, name, emoji, address, position, menuItems, description },
+  { id, name, emoji, address, position, menuItems, description, distance },
   props
 ) => (
   <section>
     <div className="restaurant__title">
       <h2>{`${name} ${emoji}`}</h2>
       <h4>
-        {`${distanceFromGleerups(position.long, position.lat)} km`}
-        {distanceFromGleerups(position.long, position.lat) > 0.4 ? "🏃‍♀️" : "🚶‍♀️"}
+        {`${distance} km`}
+        {distance > 0.4 ? "🏃‍♀️" : "🚶‍♀️"}
       </h4>
     </div>
     <div className="restaurant__body">
@@ -40,9 +36,14 @@ const RestaurantItem = (
             <p>Ingen beskrivning ännu.</p>
           )}
         </div>
-        <p className="restaurant__address">{`${address.street}, ${
-          address.postCode
-        } ${address.city} `}</p>
+        <a
+          href={`${googleDirectionsFormatter(name, address)}`}
+          className="address__directions-section"
+          target="_blank"
+        >
+          <h4 className="restaurant__address">🌍 Vägbeskrivning:</h4>
+          <p className="restaurant__address">{`${address.street}`}</p>
+        </a>
       </div>
       <div className="restaurant__item-section">
         {menuItems.length < 1 ? (

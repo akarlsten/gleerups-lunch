@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "dagens-lunch-gleerups-gatsby",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Lunchställen nära Gleerups i Malmö och vad dem serverar idag!",
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
@@ -17,6 +17,7 @@
     "gatsby-source-filesystem": "^2.0.24",
     "gatsby-transformer-json": "^2.1.11",
     "gatsby-transformer-sharp": "^2.1.17",
+    "moment": "^2.24.0",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",

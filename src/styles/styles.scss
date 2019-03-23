@@ -73,6 +73,21 @@ ul {
   }
 }
 
+.date {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  p {
+    font-size: 1.5rem;
+    padding: 0.5rem 0.5rem;
+    background-color: $accent-color;
+    color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 2rem rgba(255, 106, 193, 0.5);
+    font-weight: 700;
+  }
+}
+
 .legend {
   display: flex;
   flex-direction: row;
@@ -95,7 +110,7 @@ ul {
   border-radius: 0.5rem 0.5rem 0 0;
   box-shadow: 0 0.2rem 1rem rgba(255, 106, 193, 0.5);
   h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }
 
@@ -107,9 +122,35 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
+  border-bottom: 1px $accent-color solid;
+}
+
+.address__directions-section {
+  text-align: center;
+  margin-left: 1rem;
+  a {
+    color: $dark-color;
+    &:hover {
+      color: $accent-color;
+    }
+    &:visited {
+      color: $dark-color;
+    }
+  }
 }
 
 .restaurant__address {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+  margin: 0;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 580px) {
+  h1 {
+    font-size: 3rem;
+    span {
+      display: none;
+    }
+  }
 }

@@ -1,8 +1,12 @@
 import React from "react"
+import moment from "moment"
+import "moment/locale/sv"
 
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import RestaurantList from "../components/RestaurantList"
+
+moment.locale("sv")
 
 const IndexPage = () => (
   <Layout>
@@ -16,6 +20,9 @@ const IndexPage = () => (
       </h1>
       <h2>– Nära Gleerups</h2>
     </header>
+    <div className="date">
+      <p>{moment().format("dddd, Do MMMM")}</p>
+    </div>
     <div className="legend">
       <h4>Avstånd</h4>
     </div>

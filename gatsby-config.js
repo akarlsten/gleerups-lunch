@@ -26,6 +26,23 @@ module.exports = {
         name: "restaurants",
         auth: false,
         localSave: false,
+        schemaType: {
+          id: "string",
+          name: "string",
+          emoji: "string",
+          description: "string",
+          position: {
+            lat: "string",
+            long: "string",
+          },
+          address: {
+            street: "string",
+            postCode: "string",
+            city: "string",
+          },
+          distance: "string",
+          menuItems: [{ dish: "string" }],
+        },
       },
     },
     `gatsby-transformer-json`,
@@ -43,16 +60,18 @@ module.exports = {
         ],
       },
     },
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Dagens Lunch - Gleerups`,
+        short_name: `Lunch | Gleerups`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        background_color: `#FFF`,
+        theme_color: `#ff6ac1`,
+        display: `standalone`,
+        icon: `src/favicon.svg`, // This path is relative to the root of the site.
+        include_favicon: true,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
