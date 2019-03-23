@@ -1,6 +1,7 @@
 ![dagens-lunch](https://user-images.githubusercontent.com/13545738/54869541-6b2e2780-4d9a-11e9-80db-d717226e67ea.png)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d29a0133-0f84-482f-8417-1061b82f9320/deploy-status)](https://app.netlify.com/sites/jovial-hypatia-66462f/deploys)
+
 The static front-end for my daily lunch scraper written in GatsbyJS. The site is available at `https://lunch.adamkarlsten.com` and the JSON api that feeds it is available at `https://lunch-api.adamkarlsten.com`.
 
 Mainly a project dedicated to freshening up on web scraping techniques, but also learning how GatsbyJS works by building the simplest kind of static site.
