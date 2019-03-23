@@ -1,5 +1,3 @@
-# Dagens Lunch - Nära Gleerups
-
 ![dagens-lunch](https://user-images.githubusercontent.com/13545738/54869541-6b2e2780-4d9a-11e9-80db-d717226e67ea.png)
 
 The static front-end for my daily lunch scraper written in GatsbyJS. The site is available at `https://lunch.adamkarlsten.com` and the JSON api that feeds it is available at `https://lunch-api.adamkarlsten.com`.
