@@ -30,7 +30,11 @@ const IndexPage = () => (
     <footer>
       <span className="footer__text">
         Skapad av{" "}
-        <a href="https://github.com/acarlsten" target="_blank">
+        <a
+          href="https://github.com/acarlsten"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Adam
         </a>{" "}
         <span role="img">💥</span> – 2019

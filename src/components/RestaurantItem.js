@@ -40,8 +40,11 @@ const RestaurantItem = (
           href={`${googleDirectionsFormatter(name, address)}`}
           className="address__directions-section"
           target="_blank"
+          rel="noopener noreferrer"
         >
-          <h4 className="restaurant__address">🌍 Vägbeskrivning:</h4>
+          <h4 className="restaurant__address">
+            <span role="img">🌍</span> Vägbeskrivning:
+          </h4>
           <p className="restaurant__address">{`${address.street}`}</p>
         </a>
       </div>
