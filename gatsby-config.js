@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Dagens Lunch - Gleerups`,
     description: `Lunchställen nära Gleerups i Malmö och vad dem serverar idag!`,
-    author: `@adamka_`,
+    author: `https://github.com/acarlsten`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

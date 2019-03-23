@@ -29,7 +29,10 @@ const IndexPage = () => (
     <RestaurantList />
     <footer>
       <span className="footer__text">
-        Skapad av <a href="https://github.com/acarlsten">Adam</a>{" "}
+        Skapad av{" "}
+        <a href="https://github.com/acarlsten" target="_blank">
+          Adam
+        </a>{" "}
         <span role="img">💥</span> – 2019
       </span>
     </footer>
