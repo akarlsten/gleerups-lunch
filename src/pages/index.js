@@ -16,6 +16,9 @@ const IndexPage = () => (
       </h1>
       <h2>– Nära Gleerups</h2>
     </header>
+    <div className="legend">
+      <h4>Avstånd</h4>
+    </div>
     <RestaurantList />
     <footer>
       <span className="footer__text">

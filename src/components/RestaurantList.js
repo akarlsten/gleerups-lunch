@@ -7,23 +7,27 @@ const RestaurantList = props => (
   <StaticQuery
     query={graphql`
       query {
-        allDbJson {
+        allApiRestaurants(
+          filter: { id: { ne: "dummy" } }
+          sort: { fields: alternative_id }
+        ) {
           edges {
             node {
-              restaurants {
-                name
-                position {
-                  lat
-                  long
-                }
-                address {
-                  street
-                  postCode
-                  city
-                }
-                menuItems {
-                  dish
-                }
+              id
+              alternative_id
+              name
+              emoji
+              position {
+                lat
+                long
+              }
+              address {
+                street
+                postCode
+                city
+              }
+              menuItems {
+                dish
               }
             }
           }
@@ -32,8 +36,8 @@ const RestaurantList = props => (
     `}
     render={data => (
       <div>
-        {data.allDbJson.edges[0].node.restaurants.map(restaurant => (
-          <RestaurantItem key={restaurant.name} {...restaurant} />
+        {data.allApiRestaurants.edges.map(restaurant => (
+          <RestaurantItem key={restaurant.node.id} {...restaurant.node} />
         ))}
       </div>
     )}
