@@ -11,5 +11,3 @@ Mainly a project dedicated to freshening up on web scraping techniques, but also
 The [API server](https://github.com/acarlsten/lunch-api) is a regular Express app that serves a static db.json file. It uses node-schedule to run all the scraping scripts every day at 05:00. When it's done it makes a call to the frontend's webhook, triggering a rebuild of the site.
 
 The frontend is hosted on Netlify and updated via this repository.
-
-TODO: Add gatsby netlify module for redirects ADD STATIC FOLDER AND PUT \_REDIRECT in it, add link to raw JSON data
