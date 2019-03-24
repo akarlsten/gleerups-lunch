@@ -29,7 +29,7 @@ const IndexPage = () => (
     <RestaurantList />
     <footer>
       <span className="footer__text">
-        Skapad av{" "}
+        <a href="https://lunch-api.adamkarlsten.com">Raw JSON</a> | Skapad av{" "}
         <a
           href="https://github.com/acarlsten"
           target="_blank"

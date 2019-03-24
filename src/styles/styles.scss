@@ -129,6 +129,9 @@ ul {
 .address__directions-section {
   text-align: center;
   margin-left: 1rem;
+  &:last-child {
+    padding-bottom: 0.3rem;
+  }
   a {
     color: $dark-color;
     &:hover {

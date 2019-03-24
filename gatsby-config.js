@@ -65,7 +65,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Dagens Lunch - Gleerups`,
-        short_name: `Lunch | Gleerups`,
+        short_name: `Lunch Gleerups`,
         start_url: `/`,
         background_color: `#FFF`,
         theme_color: `#ff6ac1`,
