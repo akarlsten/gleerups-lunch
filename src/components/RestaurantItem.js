@@ -1,4 +1,9 @@
 import React from "react"
+import moment from "moment"
+moment.locale("sv")
+const weekday = moment()
+  .utc()
+  .format("E")
 
 const googleDirectionsFormatter = (name, { street, postCode, city }) => {
   const formattedName = name => encodeURI(`${name} `)
@@ -16,10 +21,20 @@ const googleDirectionsFormatter = (name, { street, postCode, city }) => {
 }
 
 const RestaurantItem = (
-  { id, name, emoji, address, position, menuItems, description, distance },
+  {
+    id,
+    name,
+    emoji,
+    address,
+    position,
+    menuItems,
+    description,
+    distance,
+    checkDay,
+  },
   props
 ) => (
-  <section>
+  <section className={checkDay !== weekday && "faded"}>
     <div className="restaurant__title">
       <h2>{`${name} ${emoji}`}</h2>
       <h4>
@@ -30,6 +45,12 @@ const RestaurantItem = (
     <div className="restaurant__body">
       <div className="restaurant__address-section">
         <div className="restaurant__desc">
+          {checkDay !== weekday && (
+            <p className="not_faded">
+              ⚠️ Datan kan vara gammal, den uppdaterades i{" "}
+              {moment(checkDay, "E").format("dddd")}s.
+            </p>
+          )}
           {!!description ? (
             <p>{description}</p>
           ) : (

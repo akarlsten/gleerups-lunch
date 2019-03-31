@@ -28,6 +28,7 @@ const RestaurantList = props => (
                 city
               }
               distance
+              checkDay
               menuItems {
                 dish
               }

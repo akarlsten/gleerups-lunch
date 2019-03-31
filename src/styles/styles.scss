@@ -132,15 +132,6 @@ ul {
   &:last-child {
     padding-bottom: 0.3rem;
   }
-  a {
-    color: $dark-color;
-    &:hover {
-      color: $accent-color;
-    }
-    &:visited {
-      color: $dark-color;
-    }
-  }
 }
 
 .restaurant__address {
@@ -161,4 +152,33 @@ ul {
       font-size: 1.7rem;
     }
   }
+}
+
+.faded {
+  color: #72758a83;
+  box-shadow: 0 0.25rem 3rem #282a3679;
+
+  .restaurant__title {
+    background-color: $dark-color;
+    box-shadow: 0 0.2rem 1rem #282a3679;
+  }
+
+  .restaurant__address-section {
+    border-bottom: 1px $dark-color solid;
+  }
+
+  a {
+    color: #72758a83;
+    text-decoration: none;
+    &:visited {
+      color: #72758a83;
+    }
+    &:hover {
+      color: $dark-color;
+    }
+  }
+}
+
+.not_faded {
+  color: $dark-color;
 }
