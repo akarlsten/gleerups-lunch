@@ -31,7 +31,7 @@ const IndexPage = () => (
       <span className="footer__text">
         <a href="https://lunch-api.adamkarlsten.com">Raw JSON</a> | Skapad av{" "}
         <a
-          href="https://github.com/acarlsten"
+          href="https://github.com/akarlsten"
           target="_blank"
           rel="noopener noreferrer"
         >
