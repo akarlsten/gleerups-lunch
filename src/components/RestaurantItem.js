@@ -74,7 +74,7 @@ const RestaurantItem = (
           <h3>Inga luncher idag! 😔</h3>
         ) : (
           <React.Fragment>
-            <h3>Dagens rätter :</h3>
+            <h3>Dagens rätter:</h3>
             <ul className="restaurant__menuitems">
               {menuItems.map((item, index) => (
                 <li key={index}>{item.dish}</li>
