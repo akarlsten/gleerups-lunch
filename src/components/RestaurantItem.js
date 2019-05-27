@@ -1,23 +1,61 @@
-import React from "react"
+import React, { useContext } from "react"
 import moment from "moment"
+
+import LunchItems from "./LunchItems"
+import LocationContext from "../context/LocationContext"
+
 moment.locale("sv")
+
 const weekday = moment()
   .utc()
   .format("E")
 
-const googleDirectionsFormatter = (name, { street, postCode, city }) => {
+const googleDirectionsFormatter = (
+  name,
+  { street, postCode, city },
+  customLat,
+  customLong
+) => {
   const formattedName = name => encodeURI(`${name} `)
   const formattedStreet = street => encodeURI(`${street} `)
   const formattedPostcode = postCode => encodeURI(`${postCode} `)
   const formattedCity = city => encodeURI(city)
-  const gleerupsAdress = encodeURI("Hans Michelsensgatan 9 21120 MALMÖ")
+  let adress = encodeURI("Hans Michelsensgatan 9 21120 MALMÖ")
 
-  return `https://www.google.com/maps/dir/?api=1&origin=${gleerupsAdress}&destination=${formattedName(
+  if (!!customLat) {
+    adress = encodeURI(`${customLat},${customLong}`)
+  }
+
+  return `https://www.google.com/maps/dir/?api=1&origin=${adress}&destination=${formattedName(
     name
   ) +
     formattedStreet(street) +
     formattedPostcode(postCode) +
     formattedCity(city)}&travelmode=walking`
+}
+
+const distanceTo = (
+  latitude,
+  longitude,
+  restaurantLatitude,
+  restaurantLongitude
+) => {
+  const toRad = x => {
+    return (x * Math.PI) / 180
+  }
+
+  const R = 6371 // Radius of the earth in km
+  const dLat = toRad(latitude - restaurantLatitude) // Javascript functions in radians
+  const dLon = toRad(longitude - restaurantLongitude)
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(55.6124)) *
+      Math.cos(toRad(latitude)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2)
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+  const d = R * c // Distance in km
+  return parseFloat(d).toPrecision(1)
 }
 
 const RestaurantItem = (
@@ -33,58 +71,56 @@ const RestaurantItem = (
     checkDay,
   },
   props
-) => (
-  <section className={checkDay !== weekday && "faded"}>
-    <div className="restaurant__title">
-      <h2>{`${name} ${emoji}`}</h2>
-      <h4>
-        {`${distance} km`}
-        {distance > 0.4 ? "🏃‍♀️" : "🚶‍♀️"}
-      </h4>
-    </div>
-    <div className="restaurant__body">
-      <div className="restaurant__address-section">
-        <div className="restaurant__desc">
-          {checkDay !== weekday && (
-            <p className="not_faded">
-              ⚠️ Datan kan vara gammal, den uppdaterades i{" "}
-              {moment(checkDay, "E").format("dddd")}s.
-            </p>
-          )}
-          {!!description ? (
-            <p>{description}</p>
-          ) : (
-            <p>Ingen beskrivning ännu.</p>
-          )}
+) => {
+  const { latitude, longitude } = useContext(LocationContext)
+
+  let adressLink = googleDirectionsFormatter(name, address)
+
+  if (!!latitude) {
+    distance = distanceTo(latitude, longitude, position.lat, position.long)
+    adressLink = googleDirectionsFormatter(name, address, latitude, longitude)
+  }
+
+  return (
+    <section className={checkDay !== weekday ? "faded" : ""}>
+      <div className="restaurant__title">
+        <h2>{`${name} ${emoji}`}</h2>
+        <h4>
+          {`${distance} km`}
+          {distance > 0.4 ? "🏃‍♀️" : "🚶‍♀️"}
+        </h4>
+      </div>
+      <div className="restaurant__body">
+        <div className="restaurant__address-section">
+          <div className="restaurant__desc">
+            {checkDay !== weekday && (
+              <p className="not_faded">
+                ⚠️ Datan kan vara gammal, den uppdaterades i{" "}
+                {moment(checkDay, "E").format("dddd")}s.
+              </p>
+            )}
+            {!!description ? (
+              <p>{description}</p>
+            ) : (
+              <p>Ingen beskrivning ännu.</p>
+            )}
+          </div>
+          <a
+            href={`${adressLink}`}
+            className="address__directions-section"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h4 className="restaurant__address">
+              <span role="img">🌍</span> Vägbeskrivning:
+            </h4>
+            <p className="restaurant__address">{`${address.street}`}</p>
+          </a>
         </div>
-        <a
-          href={`${googleDirectionsFormatter(name, address)}`}
-          className="address__directions-section"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h4 className="restaurant__address">
-            <span role="img">🌍</span> Vägbeskrivning:
-          </h4>
-          <p className="restaurant__address">{`${address.street}`}</p>
-        </a>
+        <LunchItems menuItems={menuItems} />
       </div>
-      <div className="restaurant__item-section">
-        {menuItems.length < 1 ? (
-          <h3>Inga luncher idag! 😔</h3>
-        ) : (
-          <React.Fragment>
-            <h3>Dagens rätter:</h3>
-            <ul className="restaurant__menuitems">
-              {menuItems.map((item, index) => (
-                <li key={index}>{item.dish}</li>
-              ))}
-            </ul>
-          </React.Fragment>
-        )}
-      </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
 
 export default RestaurantItem
