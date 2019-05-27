@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import moment from "moment"
 
 import LunchItems from "./LunchItems"
@@ -55,31 +55,34 @@ const distanceTo = (
       Math.sin(dLon / 2)
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
   const d = R * c // Distance in km
-  return parseFloat(d).toPrecision(1)
+  return parseFloat(parseFloat(d).toPrecision(1))
 }
 
-const RestaurantItem = (
-  {
-    id,
-    name,
-    emoji,
-    address,
-    position,
-    menuItems,
-    description,
-    distance,
-    checkDay,
-  },
-  props
-) => {
-  const { latitude, longitude } = useContext(LocationContext)
+const RestaurantItem = ({
+  name,
+  emoji,
+  address,
+  position,
+  menuItems,
+  description,
+  distance,
+  checkDay,
+}) => {
+  const userLocation = useContext(LocationContext)
+  const [latitude, setLatitude] = useState()
+  const [longitude, setLongitude] = useState()
 
   let adressLink = googleDirectionsFormatter(name, address)
+
+  useEffect(() => {
+    setLatitude(userLocation.latitude)
+    setLongitude(userLocation.longitude)
+  }, [userLocation])
 
   if (!!latitude) {
     distance = distanceTo(latitude, longitude, position.lat, position.long)
     adressLink = googleDirectionsFormatter(name, address, latitude, longitude)
-  }
+  } // maybe refactor all of the above into the context? or a hook?
 
   return (
     <section className={checkDay !== weekday ? "faded" : ""}>
@@ -87,7 +90,7 @@ const RestaurantItem = (
         <h2>{`${name} ${emoji}`}</h2>
         <h4>
           {`${distance} km`}
-          {distance > 0.4 ? "🏃‍♀️" : "🚶‍♀️"}
+          {distance > 1 ? "🚴‍♀️" : distance > 0.4 ? "🏃‍♀️" : "🚶‍♀️"}
         </h4>
       </div>
       <div className="restaurant__body">
