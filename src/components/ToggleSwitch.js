@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useContext } from 'react'
+=======
+import React, { useEffect, useState, useContext } from 'react'
+>>>>>>> 437b06a19e4179efca3f8d5bdbec0bea6de9022c
 import Switch from 'react-switch'
 
 import LocationContext from '../context/LocationContext'
