@@ -1,11 +1,19 @@
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import React, { useState } from 'react'
+import { StaticQuery, graphql } from 'gatsby'
 
-import RestaurantItem from "./RestaurantItem"
-import LocationContext from "../context/LocationContext"
-import useGeolocation from "../hooks/useGeolocation"
+import RestaurantItem from './RestaurantItem'
+import LocationContext from '../context/LocationContext'
+import useGeolocation from '../hooks/useGeolocation'
+import ToggleSwitch from './ToggleSwitch'
 
-const RestaurantList = props => {
+const RestaurantList = () => {
+  const [toggleButton, setToggleButton] = useState(false)
+  const handleToggle = () => {
+    setToggleButton(!toggleButton)
+  }
+
+  // move all this stuff out of here
+
   const userLocation = useGeolocation()
 
   return (
@@ -43,7 +51,10 @@ const RestaurantList = props => {
         }
       `}
       render={data => (
-        <LocationContext.Provider value={userLocation}>
+        <LocationContext.Provider value={{ userLocation, toggleButton, handleToggle }} toggle>
+          <div className="legend">
+            <ToggleSwitch />
+          </div>
           {data.allApiRestaurants.edges.map(restaurant => (
             <RestaurantItem key={restaurant.node.id} {...restaurant.node} />
           ))}
