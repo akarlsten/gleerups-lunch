@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
 import RestaurantItem from './RestaurantItem'
@@ -12,6 +12,17 @@ const RestaurantList = () => {
     setToggleButton(!toggleButton)
   }
 
+  useEffect(() => {
+    const toggleState = JSON.parse(localStorage.getItem('toggleState'))
+
+    if (toggleState) {
+      setToggleButton(toggleState)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.toggleState = JSON.stringify(toggleButton)
+  }, [toggleButton])
   // move all this stuff out of here
 
   const userLocation = useGeolocation()
