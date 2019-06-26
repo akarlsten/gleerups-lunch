@@ -42,6 +42,7 @@ module.exports = {
           },
           distance: "string",
           menuItems: [{ dish: "string" }],
+          checkDay: "string"
         },
       },
     },
