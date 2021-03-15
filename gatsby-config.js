@@ -51,18 +51,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Nunito`,
-            variants: ["400", "700", "900"],
-          },
-        ],
-      },
-    },
-
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Dagens Lunch - Gleerups`,
